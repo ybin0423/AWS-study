@@ -385,4 +385,13 @@ Vertical Scaling; resizing EC2 instance
 - remove admin overhead of managing containers 
 - run in 2 modes ; 1.EC2 2. Fargate 
 
+---
 
+**EC2 vs ECS vs Lambda**
+1. EC2
+   -> provide virtual servers in cloud, giving users **<ins>full control over operating system and software</ins>**
+2. ECS
+   -> fully manaaged **<ins>container orchestration service</ins>** to manage docker service on virtual mahchines
+3. Lambda
+   -> serveless computer service to **<ins>automatically runs code in response to events</ins>** (event driven tasks/ automation task/ backend api)
+- **severless** = 클라우드 컴퓨팅 모델중 하나로 개발자가 서버를 직접 관리할 필요가 없음
