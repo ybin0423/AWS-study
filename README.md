@@ -1,4 +1,72 @@
 # AWS-study
+
+### **Hierarchy and Relationship**
+VPC (Virtual Private Cloud), Subnet, S3 (Simple Storage Service), and ENI (Elastic Network Interface) are fundamental components of AWS networking. Here's an explanation of their structure and how they fit together, along with a simplified diagram.
+
+1. **VPC (Virtual Private Cloud)**:
+   - A VPC is a virtual network dedicated to your AWS account.
+   - It contains **subnets**, which are subdivisions of the VPC.
+   - VPCs also include routing tables, internet gateways, NAT gateways, and other networking resources.
+
+2. **Subnets**:
+   - Subnets divide the VPC into smaller networks.
+   - Each subnet is associated with a specific Availability Zone (AZ).
+   - Subnets can be **public** (accessible from the internet) or **private** (isolated).
+
+3. **ENI (Elastic Network Interface)**:
+   - An ENI is a virtual network card attached to an EC2 instance or other resources in the VPC.
+   - It holds IP addresses, MAC addresses, and security groups.
+   - It enables communication between resources within the VPC or to external networks.
+
+4. **S3 (Simple Storage Service)**:
+   - S3 is not part of a VPC but can be accessed from resources within a VPC.
+   - S3 buckets are global but can be accessed using VPC endpoints for secure and private connectivity.
+
+---
+
+### **Diagram Explanation**
+
+Below is a high-level representation of the structure.
+
+```plaintext
++-------------------------------------------+
+|                 AWS Account                |
+|  +--------------------------------------+  |
+|  |                VPC                   |  |
+|  |                                      |  |
+|  |   +------------+    +------------+  |  |
+|  |   |  Subnet 1  |    |  Subnet 2  |  |  |
+|  |   | (Private)  |    | (Public)   |  |  |
+|  |   +------------+    +------------+  |  |
+|  |      |                       |       |  |
+|  |      |                       |       |  |
+|  |   +---------+         +--------------+|  |
+|  |   |   ENI   |         |  Internet GW ||  |
+|  |   |         |         +--------------+|  |
+|  |   +---------+                        |  |
+|  |                                      |  |
+|  +--------------------------------------+  |
+|                                           |
+|            S3 (Global Service)           |
++-------------------------------------------+
+```
+
+
+
+### **What’s Inside and Outside**
+- **Inside the VPC**:
+  - **Subnets**: Each subnet belongs to a specific AZ and can hold EC2 instances or other resources.
+  - **ENIs**: Attached to EC2 instances, ENIs enable communication within the VPC.
+  - **Routing Tables, Gateways**: Manage traffic between resources.
+
+- **Outside the VPC**:
+  - **S3**: A global service, not physically within the VPC but accessible via endpoints or internet.
+
+![image](https://github.com/user-attachments/assets/3b74a816-4c99-4773-a913-0dbe310f5e3f)
+image created by: ChatGPT
+
+--- 
+
 **IAM**
 - User; IDs representing human
 - Group; Collection of users
