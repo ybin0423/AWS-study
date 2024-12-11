@@ -412,3 +412,4 @@ Here’s a detailed comparison of **EC2**, **ECS**, and **Lambda** based on thei
 
 ---
 
+Cloud Trail = AWS에서 발생한 API 요청을 로그를 모두 기록해놓은 것.
