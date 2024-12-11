@@ -395,3 +395,20 @@ Vertical Scaling; resizing EC2 instance
 3. Lambda
    -> serveless computer service to **<ins>automatically runs code in response to events</ins>** (event driven tasks/ automation task/ backend api)
 - **severless** = 클라우드 컴퓨팅 모델중 하나로 개발자가 서버를 직접 관리할 필요가 없음
+Here’s a detailed comparison of **EC2**, **ECS**, and **Lambda** based on their features, use cases, and limitations:
+
+---
+### **Comparison Table**
+
+| Feature                | **EC2**                     | **ECS**                      | **Lambda**                  |
+|------------------------|-----------------------------|------------------------------|-----------------------------|
+| **Compute Type**       | Virtual Machine             | Containers                   | Function-as-a-Service       |
+| **Scalability**        | Manual or auto scaling      | Managed container scaling    | Automatic event-based       |
+| **State Management**   | Stateful                    | Stateful or stateless        | Stateless                   |
+| **Cost Model**         | Pay for uptime             | Pay for cluster (or Fargate) | Pay per request + duration  |
+| **Control**            | Full server control         | Partial (containerized apps) | No infrastructure control   |
+| **Startup Time**       | Minutes (instance boot)     | Seconds (container launch)   | Milliseconds                |
+| **Best For**           | Long-running workloads      | Microservices and batch jobs | Event-driven tasks          |
+
+---
+
