@@ -397,7 +397,6 @@ Vertical Scaling; resizing EC2 instance
 - **severless** = 클라우드 컴퓨팅 모델중 하나로 개발자가 서버를 직접 관리할 필요가 없음
 Here’s a detailed comparison of **EC2**, **ECS**, and **Lambda** based on their features, use cases, and limitations:
 
----
 ### **Comparison Table**
 
 | Feature                | **EC2**                     | **ECS**                      | **Lambda**                  |
@@ -412,4 +411,82 @@ Here’s a detailed comparison of **EC2**, **ECS**, and **Lambda** based on thei
 
 ---
 
-Cloud Trail = AWS에서 발생한 API 요청을 로그를 모두 기록해놓은 것.
+**EBS (Elastic Block Storage)**
+- aws 클라우드의 ec2에 사용될 <ins>영구</ins> 블록 스토리지 볼륨 제공. (자동으로 복제되어 보존성 제공)
+- ebs는 하드디스크 부분.
+
+**Block Storage VS Object Storage**
+- Block Storage = 무엇을 설치할 수 있다
+- Object Storage = 파일만 저장할 수 있다.
+
+**EBS vs EFS vs S3**
+
+| Feature/Criteria     | **EFS** (Elastic File System)                         | **EBS** (Elastic Block Store)                      | **S3** (Simple Storage Service)                      |
+|-----------------------|------------------------------------------------------|---------------------------------------------------|-----------------------------------------------------|
+| **Storage Type**      | Fully managed network file system (NFS).             | Block storage (like a virtual hard drive).        | Object storage for unstructured data.               |
+| **Data Access**       | Shared, multi-instance access. Supports concurrent access from multiple EC2 instances. | Single-instance access; attached to one EC2 instance at a time. | Global access via APIs, SDKs, and the web interface. |
+| **Use Cases**         | File sharing, content management, home directories, machine learning. | Persistent storage for EC2 instances, databases, or low-latency apps. | Data lakes, backups, archives, content delivery, static websites. |
+| **Protocol**          | NFSv4.0 and NFSv4.1                                  | Attached as a block device (via iSCSI).           | REST API, S3 CLI, and SDKs.                         |
+| **Performance Modes** | - General Purpose: Low latency. <br> - Max I/O: High throughput for large workloads. | - GP3 (General Purpose): Optimized for general use. <br> - IO1/IO2 (Provisioned IOPS): For high I/O workloads. | - Standard: High durability and availability. <br> - One Zone IA: Lower-cost infrequent access. |
+| **Durability**        | 11 nines (99.999999999%) durability, built across multiple AZs. | Durability depends on the specific EBS volume, but backed by replication within an AZ. | 11 nines (99.999999999%) durability, across multiple AZs. |
+| **Scalability**       | Scales automatically up to petabytes.                | Fixed size (1 GiB to 64 TiB); resize manually.     | Virtually unlimited storage.                        |
+| **Availability**      | High availability across multiple AZs.               | Single AZ by default; can use snapshots for cross-AZ resilience. | High availability across multiple AZs (Standard tier). |
+| **Pricing**           | Pay-as-you-go based on storage used.                 | Pay per GB provisioned.                           | Pay per GB stored, and data requests/transfer.      |
+| **Latency**           | Low latency, suitable for file operations.           | Lowest latency, suitable for block-level operations. | Higher latency compared to EFS/EBS.                 |
+| **Backup & Restore**  | Supports AWS Backup service.                         | Supports snapshots for backups and restore.       | Versioning and lifecycle management for backup.     |
+| **Encryption**        | Encryption at rest using KMS.                        | Encryption at rest using KMS.                     | Encryption at rest using KMS or S3-managed keys.    |
+| **Access Control**    | IAM, security groups, NFS access rules.              | IAM, security groups.                             | IAM, bucket policies, ACLs.                         |
+| **Limitations**       | Limited to NFS-compatible workloads; more expensive than S3 for storage. | Single-instance attachment; scaling requires resizing. | Not suitable for low-latency or transactional workloads. |
+
+
+### **Key Differences**
+1. **EFS (파일)** :
+   - Use for shared, scalable, file-level storage (e.g., for web servers or shared app data).
+   - Managed service with automatic scaling.
+   - More expensive but ideal for multiple EC2 instances requiring file access.
+   - 여러 AZ에서 동시 접근, 수천개의 EC2 instance와 연결.
+
+2. **EBS (블록)**:
+   - Use for high-performance, block-level storage attached to a single EC2 instance.
+   - Requires manual resizing for scaling.
+   - Best suited for databases, file systems, or transactional applications.
+
+3. **S3**:
+   - Use for scalable object storage, archiving, and content delivery.
+   - Ideal for unstructured data like images, videos, backups, and logs.
+   - Cost-effective for large data volumes but not suitable for low-latency transactional access.
+
+ 대기시간 빠른 순서: EBS > EFS > S3
+
+ ### Block Storage vs File Storage vs Object Storage
+
+**Block Storage**
+-> 빠른 액세스 및 검색에 최적화된 방식.
+- 파일과 데이터베이스같은 데이터를 가져와 블록 (동일한 크기)으로 나눔 -> 기본 물리적 스토리지에 데이터 블록을 저장
+- 빠르고 신뢰할 수 있는 데이터 액세스가 필요한 애플리케이션에 사용됨.
+- 정형 (미리 정의된 구조를 따르는 데이터) 데이터베이스 스토리지, VM 파일 시스템 볼륨, 대량의 읽기 및 쓰기 로드에 유용
+
+**Object Storage**
+-  대량의 비정형 데이터에 적합.
+-  각 객체에 고유 식별 코드가 제공되고 그 객체에 대한 설명 (= <ins>메타데이터</ins>)가 포함됨.
+
+**File Storage**
+- 파일 및 폴더의 계층 구조로 데이터를 저장.
+- 특정 환경에 데이터를 저장한다. (블록은 운영체제와 통합.)
+- 최종 사용자 컴퓨팅을 위한 직관적 인터페이스 사용.
+
+---
+
+### **Summary of Use Cases**
+| **Scenario**                  | **Recommended Service**          |
+|--------------------------------|-----------------------------------|
+| Shared storage across instances | EFS                              |
+| High-performance storage for a single instance | EBS                              |
+| Large-scale object storage, backups, or archives | S3                              |
+| Hosting a static website        | S3                              |
+| Machine learning input/output   | EFS or S3                       |
+| Low-latency database storage    | EBS                             |
+
+---
+
+- Cloud Trail = AWS에서 발생한 API 요청을 로그를 모두 기록해놓은 것.
