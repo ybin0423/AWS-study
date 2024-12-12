@@ -235,9 +235,6 @@ Vertical Scaling; resizing EC2 instance
 - helps to set a state for things like package, users, groups 
 - enhance bootstrapping
 
-EC2 instance roles & profile 
-- how applicaions running on EC2 instance can be given permission to access AWS resource
-
 Reliability = capability of workload to be able to recover successfully from infrastructure 
 or service disruption or network failure
 
@@ -489,4 +486,13 @@ Here’s a detailed comparison of **EC2**, **ECS**, and **Lambda** based on thei
 
 ---
 
+**ELB**
+- EC2 인스턴스, IP 주소, 컨테이너에 트래픽을 분산함.
+- 등록된 대상의 상태를 모니터링하며 양호한 상태인 경우 트래픽을 routing 함.
+- 수신 트래픽의 변화에 따라 load balancer의 용량을 자동으로 조절함.
+
+AWS SDK - 언어별 API를 제공하고, 서명 계산, 요청 재시도 처리 및 오류 처리와 같은 많은 연결 세부 정보를 관리.
+
+---
 - Cloud Trail = AWS에서 발생한 API 요청을 로그를 모두 기록해놓은 것.
+- Resilience = 복원력있는 
