@@ -13,11 +13,11 @@ VPC (Virtual Private Cloud), Subnet, S3 (Simple Storage Service), and ENI (Elast
    - Each subnet is associated with a specific Availability Zone (AZ).
    - Subnets can be **public** (accessible from the internet) or **private** (isolated).
      
-3. **EC2 Instance**
-   -EC2 인스턴스는 AWS 클라우드의 가상 서버 (인스턴스 유형에 따라 하드웨어가 지정됌)
-   -Amazon EC2를 사용하여 원하는 수의 가상 서버를 구축하고 보안 및 네트워킹을 구성하며 스토리지를 관리할 수 있다.
-   -용량을 추가(스케일 업)하여 월간 또는 연간 프로세스 또는 웹 사이트 트래픽 급증 등 컴퓨팅 사용량이 많은 작업을 처리할 수 있다.
-   -Used for hosting web applications and APIs and hosting databases or backend applications.
+3. **EC2 Instance**:
+   - EC2 인스턴스는 AWS 클라우드의 가상 서버 (인스턴스 유형에 따라 하드웨어가 지정됌)
+   - Amazon EC2를 사용하여 원하는 수의 가상 서버를 구축하고 보안 및 네트워킹을 구성하며 스토리지를 관리할 수 있다.
+   - 용량을 추가(스케일 업)하여 월간 또는 연간 프로세스 또는 웹 사이트 트래픽 급증 등 컴퓨팅 사용량이 많은 작업을 처리할 수 있다.
+   - Used for hosting web applications and APIs and hosting databases or backend applications.
 
 
 4. **ENI (Elastic Network Interface)**:
