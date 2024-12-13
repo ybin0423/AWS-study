@@ -365,19 +365,6 @@ Every EC2 instance have 2 status check
 Horizontal; adding more instance as load increases
 Vertical Scaling; resizing EC2 instance 
 
-**Instance Metadata**
-- data about my instance tha I can use to configure or manage 
-- Not authenticated or encrypted 
-
-**Image Anatomy**
-- running copy of docker image
-- made up of multiple layers
-
-**Container Anatomy**
-- running copy of docker image with one additional read/write layer 
--> anything happening during running is stored in this layer 
--Dockerfiles used to build images 
-
 **ECS (Elastic Container Service)**
 - remove admin overhead of managing containers 
 - run in 2 modes ; 1.EC2 2. Fargate 
@@ -491,6 +478,13 @@ Here’s a detailed comparison of **EC2**, **ECS**, and **Lambda** based on thei
 - 등록된 대상의 상태를 모니터링하며 양호한 상태인 경우 트래픽을 routing 함.
 - 수신 트래픽의 변화에 따라 load balancer의 용량을 자동으로 조절함.
 
+  **TLS/SSL** - 전송 계층 보안 
+- securing an internet connection by <U>encrypting data</U> sent between a website and a browser (or between two servers)
+- HTTPS: website secured by using TLS or SSL (HTTPS 작동 방식 공부)
+- **SNI**: TLS 암호 프로토콜의 확장버전, TLS 핸드쉐이크의 첫 단계에서 클라이언트가 어느 호스트명에 접속하려는지 서버에 알리는 역할.
+  (클라이언트가 서버에서 어떤 호스트이름과 대화하는지 표시하는 방법)
+- ***호스트이름: 네트워크에 연결되는 장치의 이름*** (인터넷에서 도메인 이름 또는 웹 사이트 이름은 호스트 이름의 한 유형)
+- **TLS 핸드쉐이크** = 통신을 하는 브라우저와 웹 서버가 서로 <U>암호화 통신</U> 을 시작할 수 있도록 신분을 확인하고, 필요한 정보를 클라이언트와 서버가 주고 받는 과정
 AWS SDK - 언어별 API를 제공하고, 서명 계산, 요청 재시도 처리 및 오류 처리와 같은 많은 연결 세부 정보를 관리.
 
 ---
