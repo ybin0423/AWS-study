@@ -488,5 +488,14 @@ Here’s a detailed comparison of **EC2**, **ECS**, and **Lambda** based on thei
 AWS SDK - 언어별 API를 제공하고, 서명 계산, 요청 재시도 처리 및 오류 처리와 같은 많은 연결 세부 정보를 관리.
 
 ---
+**ASG (Auto Scaling Group)**
+- 애플리케이션의 수요에 따라 EC2 인스턴스의 수를 자동으로 조정하는 기능.
+
+**Scaling Policy**
+- 스케일링이 발생하는 조건과 스케일 아웃/인을 수행하는 작업
+
+**Scaling In** = Reduce numbers of instances in ASG
+**Scaling Out** = Increase numbers of instances in ASG
+---
 - Cloud Trail = AWS에서 발생한 API 요청을 로그를 모두 기록해놓은 것.
 - Resilience = 복원력있는 
