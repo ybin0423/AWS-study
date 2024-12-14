@@ -484,8 +484,16 @@ Here’s a detailed comparison of **EC2**, **ECS**, and **Lambda** based on thei
 - **SNI**: TLS 암호 프로토콜의 확장버전, TLS 핸드쉐이크의 첫 단계에서 클라이언트가 어느 호스트명에 접속하려는지 서버에 알리는 역할.
   (클라이언트가 서버에서 어떤 호스트이름과 대화하는지 표시하는 방법)
 - ***호스트이름: 네트워크에 연결되는 장치의 이름*** (인터넷에서 도메인 이름 또는 웹 사이트 이름은 호스트 이름의 한 유형)
-- **TLS 핸드쉐이크** = 통신을 하는 브라우저와 웹 서버가 서로 <U>암호화 통신</U> 을 시작할 수 있도록 신분을 확인하고, 필요한 정보를 클라이언트와 서버가 주고 받는 과정
+- **TLS 핸드쉐이크** = 통신을 하는 브라우저와 웹 서버가 서로 <ins>암호화 통신</ins> 을 시작할 수 있도록 신분을 확인하고, 필요한 정보를 클라이언트와 서버가 주고 받는 과정
+
+---
+### 웹 브라우저 vs 웹 서버 
+
+- Web browser = Stands on the user-side, displays the web page and process the requests from server
+- Web server = Stands on the server-side, process teh request if the user clicks or searchs for something
+  
 AWS SDK - 언어별 API를 제공하고, 서명 계산, 요청 재시도 처리 및 오류 처리와 같은 많은 연결 세부 정보를 관리.
+AWS RDS - 관계형 데이터베이스 (Relational Database)를 클라우드에서 설정하도록 하는 웹 서비스. 
 
 ---
 **ASG (Auto Scaling Group)**
@@ -495,7 +503,54 @@ AWS SDK - 언어별 API를 제공하고, 서명 계산, 요청 재시도 처리 
 - 스케일링이 발생하는 조건과 스케일 아웃/인을 수행하는 작업
 
 **Scaling In** = Reduce numbers of instances in ASG
+
 **Scaling Out** = Increase numbers of instances in ASG
+
+**Amazon Aurora** 
+-> 완전 관리형 관계형 데이터베이스 엔진
++ 데이터 베이스 클러스터링 및 복제를 자동화.
+
++ **ElastiCache** =  완전 관리형 (Fully Managed) 인 메모리 데이터 저장소 및 캐시 서비스.
+-> 백엔드 스토리지에서 가져오는 데이터를 캐싱 (Cache) 하여 엑세스 속도를 향상시킴.
+- 데이터를 더 빨리 가져오기 위한 메모리 기반의 저장소 서비스. 
+- 액세스 속도가 빠른 특성상 성능이 중요한 애플리케이션에서 사용됨. 
+
+**In-Memory 데이터 베이스**
+-> 데이터를 메모리에 저장하고 처리하는 방식. (보통은 디스크에 저장하고 꺼내쓴다.)
+- Key: Value 형태로 저장됨.
+  
+장점: 100~ 1000배 가량 빠름
+단점: 데이터 저장이 휘발성이라 DB 서버 전원이 꺼지면 안에 있는 자료들이 즉시 삭제됨.
+
+**인메모리 DB 종류**
+1. ***Redis***:
+   - 고급 기능
+   - S3와 연결돼 백업 / 복원할 수 있고 데이터를 영구적으로 보존할 수 있음.
+   - Single Thread: 한번에 한 작업만 처리.
+   - 보안 기능 有.
+
+2. ***Memcached***:
+   - 심플한 버젼.
+   - Multi- Thread; 여러 스레드가 동시에 요청 처리가능. 
+   - 주로 빠른 캐싱 서비스가 필요한 애플리케이션에서 사용되고 다른 중요한 DB는 다른 스토리지에 저장되거나 하면서 사용됨.
+---
+### Route 53
+-> DNS 웹 서비스 (확장성과 가용성이 뛰어남.)
+
+**DNS 작용방식**
+-> 도메인을 IP 주소로 변환시켜 주는 서비스. 
+- 쿼리가 전송되면 각각 루트 서버, TLD 서버를 거쳐 해당 도메인에 해당하는 IP주소를 받고 해당 주소로 접근함.
+
+### S3 
+-> 클라우드 스토리지 서비스.
+
+**S3 Bucket / S3 Object**
+- 버킷의 이름은 유일하게 함 (unique).
+- S3 버킷안에 저장되는 데이터는 모두 객체라고 불림. (버킷 = 마트, 객체= 상품)
+
+- S3는 데이터를 <ins>인터넷</ins>을 통해 객체 형태로 저장하는 서비스.
+- 객체를 업/다운로드 하는데 HTTP/HTTPS를 통한 API가 사용됨. 
+
 ---
 - Cloud Trail = AWS에서 발생한 API 요청을 로그를 모두 기록해놓은 것.
 - Resilience = 복원력있는 
