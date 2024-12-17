@@ -547,10 +547,18 @@ AWS RDS - 관계형 데이터베이스 (Relational Database)를 클라우드에�
 **S3 Bucket / S3 Object**
 - 버킷의 이름은 유일하게 함 (unique).
 - S3 버킷안에 저장되는 데이터는 모두 객체라고 불림. (버킷 = 마트, 객체= 상품)
-
 - S3는 데이터를 <ins>인터넷</ins>을 통해 객체 형태로 저장하는 서비스.
-- 객체를 업/다운로드 하는데 HTTP/HTTPS를 통한 API가 사용됨. 
+- 객체를 업/다운로드 하는데 HTTP/HTTPS를 통한 API가 사용됨.
+  
+---
+### 오답
 
+- On-Premise = 가상의 공간에 서버 저장 x, 자체적으로 시스템을 구축해 서버 저장
+- **AWS Snowball Edge** = Data Transport service that can put data in/out to the cloud **[파일 migration의 용도]**
+- Amazon SQS = 메세지를 프로그래밍적으로 보내는 것.
+- AWS Athena = S3에 쿼리하는 것.
+- 복원력과 확장성을 극대화하기 위한 최상의 솔루션 -> Amazon SQS 대기열을 작업의 대상으로 사용; 컴퓨팅 노드에서 기본 서버가 분리되어 독립적으로 확장
+- 
 ---
 - Cloud Trail = AWS에서 발생한 API 요청을 로그를 모두 기록해놓은 것.
 - Resilience = 복원력있는 
