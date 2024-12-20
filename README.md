@@ -564,4 +564,5 @@ AWS RDS - 관계형 데이터베이스 (Relational Database)를 클라우드에�
 - 
 ---
 - Cloud Trail = AWS에서 발생한 API 요청을 로그를 모두 기록해놓은 것.
+- 낮은 지연시간 접근, DDoS 공격 보호, 파일 분산 및 캐싱, S3/ALB/EC2/S3 웹사이트 가능
 - Resilience = 복원력있는 
