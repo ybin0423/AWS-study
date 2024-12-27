@@ -552,6 +552,9 @@ AWS RDS - 관계형 데이터베이스 (Relational Database)를 클라우드에�
 
 **Route53**
 - DNS서비스 중 하나로 도메인을 IP로 변환하여 목적지 Ip를 찾아가는 과정
+
+**ASG** (Auto Scaling Group)
+- collection of EC2 instances, sharing similar characteristics and treated as logical grouping for management and dynamic scaling.
   
 ---
 ### 오답
