@@ -555,6 +555,9 @@ AWS RDS - 관계형 데이터베이스 (Relational Database)를 클라우드에�
 
 **ASG** (Auto Scaling Group)
 - collection of EC2 instances, sharing similar characteristics and treated as logical grouping for management and dynamic scaling.
+
+**CloudFront**
+- 낮은 지연시간
   
 ---
 ### 오답
