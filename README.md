@@ -558,6 +558,9 @@ AWS RDS - 관계형 데이터베이스 (Relational Database)를 클라우드에�
 
 **CloudFront**
 - 낮은 지연시간
+
+**Snow Family**
+- 데이터 마이그레이션 기능
   
 ---
 ### 오답
