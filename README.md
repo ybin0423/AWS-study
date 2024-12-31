@@ -1,4 +1,4 @@
-## AWS-study
+ ## AWS-study
 
 ### **Hierarchy and Relationship**
 VPC (Virtual Private Cloud), Subnet, S3 (Simple Storage Service), and ENI (Elastic Network Interface) are fundamental components of AWS networking. Here's an explanation of their structure and how they fit together, along with a simplified diagram.
@@ -60,8 +60,6 @@ Below is a high-level representation of the structure.
 |            S3 (Global Service)           |
 +-------------------------------------------+
 ```
-
-
 
 ### **What’s Inside and Outside**
 - **Inside the VPC**:
@@ -478,7 +476,7 @@ Here’s a detailed comparison of **EC2**, **ECS**, and **Lambda** based on thei
 - 등록된 대상의 상태를 모니터링하며 양호한 상태인 경우 트래픽을 routing 함.
 - 수신 트래픽의 변화에 따라 load balancer의 용량을 자동으로 조절함.
 
-  **TLS/SSL** - 전송 계층 보안 
+**TLS/SSL** - 전송 계층 보안 
 - securing an internet connection by <U>encrypting data</U> sent between a website and a browser (or between two servers)
 - HTTPS: website secured by using TLS or SSL (HTTPS 작동 방식 공부)
 - **SNI**: TLS 암호 프로토콜의 확장버전, TLS 핸드쉐이크의 첫 단계에서 클라이언트가 어느 호스트명에 접속하려는지 서버에 알리는 역할.
@@ -561,6 +559,12 @@ AWS RDS - 관계형 데이터베이스 (Relational Database)를 클라우드에�
 
 **Snow Family**
 - 데이터 마이그레이션 기능
+
+**Kinesis**
+- 실시간 스트리밍 데이터 수집, 처리, 분석 기능
+- Kinesis Data Stream: 데이터 스트림 수집하여 처리 및 저장.
+- Kinesis Data Firehose: 오토 스케일링 및 데이터 형식 변환.
+- Kinesis Data Analytics: SQL 등으로 데이터 스트림 분석.
   
 ---
 ### 오답
