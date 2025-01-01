@@ -565,7 +565,9 @@ AWS RDS - 관계형 데이터베이스 (Relational Database)를 클라우드에�
 - Kinesis Data Stream: 데이터 스트림 수집하여 처리 및 저장.
 - Kinesis Data Firehose: 오토 스케일링 및 데이터 형식 변환.
 - Kinesis Data Analytics: SQL 등으로 데이터 스트림 분석.
-  
+
+**EFS**
+- 관리형 NFS, 많은 EC2에 마운트
 ---
 ### 오답
 
