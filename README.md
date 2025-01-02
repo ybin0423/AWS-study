@@ -568,6 +568,9 @@ AWS RDS - 관계형 데이터베이스 (Relational Database)를 클라우드에�
 
 **EFS**
 - 관리형 NFS, 많은 EC2에 마운트
+
+**ELB**
+- 단일 액세스 지점 제공.
 ---
 ### 오답
 
